@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1F3A"/>
+      <stop offset="100%" stop-color="#143052"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="560" width="1200" height="70" fill="#9A7B3C" opacity="0.35"/>
+  <text x="80" y="260" font-family="Georgia, serif" font-size="96" font-weight="600" fill="#FFFFFF" letter-spacing="6">FISCONT</text>
+  <text x="80" y="330" font-family="Arial, sans-serif" font-size="36" fill="#C4A35A" letter-spacing="8">PROIECTE</text>
+  <text x="80" y="420" font-family="Arial, sans-serif" font-size="28" fill="rgba(255,255,255,0.8)">Audit · Reorganizare · Departament financiar</text>
+</svg>

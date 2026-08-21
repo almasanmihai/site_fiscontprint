@@ -1,0 +1,80 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  points?: string[];
+  href?: string;
+}
+
+const { eyebrow, title, description, points = [], href } = Astro.props;
+---
+
+<article class="service reveal">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h3>{title}</h3>
+  <p>{description}</p>
+  {
+    points.length > 0 && (
+      <ul>
+        {points.map((point) => (
+          <li>{point}</li>
+        ))}
+      </ul>
+    )
+  }
+  {href && <a class="more" href={href}>Află mai mult</a>}
+</article>
+
+<style>
+  .service {
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.65rem;
+    font-weight: 500;
+  }
+
+  .service p {
+    color: var(--muted);
+  }
+
+  .service ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+
+  .service li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.4rem;
+    color: var(--navy-mid);
+    font-size: 0.98rem;
+  }
+
+  .service li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .more {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 500;
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  .more:hover {
+    text-decoration: underline;
+  }
+</style>

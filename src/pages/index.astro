@@ -1,0 +1,180 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+import ServiceBlock from "../components/ServiceBlock.astro";
+import "../styles/global.css";
+---
+
+<BaseLayout
+  title="Fiscont Proiecte — audit, reorganizare și departament financiar"
+  description="Servicii conexe Fiscont: audit intern, proiecte de reorganizare financiară și creare de departament financiar, inclusiv organizare de digitalizare."
+>
+  <Header slot="header" />
+
+  <Hero
+    title="Ordine în finanțe. Claritate în echipă."
+    lede="Proiecte dedicate pentru audit intern, reorganizare financiară și setarea unui departament financiar — inclusiv organizarea digitalizării."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Trei direcții de proiect</h2>
+        <p>
+          Nu înlocuim contabilitatea de zi cu zi. Construim și punem în ordine
+          structuri pe care apoi le poți opera — singur sau împreună cu
+          <a href="https://fiscontsrl.ro/" target="_blank" rel="noopener noreferrer">Fiscont</a>.
+        </p>
+      </div>
+
+      <div class="services-list">
+        <ServiceBlock
+          eyebrow="01"
+          title="Audit intern"
+          description="Evaluăm controalele, fluxurile și riscurile din zona financiară, ca să știi unde ești vulnerabil și ce merită corectat întâi."
+          points={["Conformitate și control intern", "Maparea riscurilor operaționale", "Recomandări acționabile, prioritizate"]}
+          href="/servicii#audit-intern"
+        />
+        <ServiceBlock
+          eyebrow="02"
+          title="Reorganizare financiară"
+          description="Proiecte punctuale de restructurare: ordine în raportare, roluri clare, procese care țin pasul cu creșterea afacerii."
+          points={["Restructurare de procese și roluri", "Claritate pe cash-flow și raportare", "Tranziție fără blocaje operaționale"]}
+          href="/servicii#reorganizare"
+        />
+        <ServiceBlock
+          eyebrow="03"
+          title="Departament financiar de la zero"
+          description="Creăm și setăm departamentul financiar — un serviciu rar pe piață. Includem organizarea digitalizării: contacte, avize, supervizări și fluxuri."
+          points={["Structură, proceduri și responsabilități", "Digitalizare documente și aprobări", "Supervizare până la autonomia echipei"]}
+          href="/servicii#departament"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container split">
+      <div class="reveal">
+        <h2>Pentru cine lucrăm</h2>
+        <p class="muted">
+          Companii care cresc mai repede decât infrastructura financiară — sau
+          care vor un departament propriu, nu doar externalizare pe termen
+          nedefinit.
+        </p>
+      </div>
+      <ul class="prose-list reveal">
+        <li>Antreprenori care vor control și vizibilitate asupra finanțelor</li>
+        <li>Echipe care trec de la „contabilul extern” la structură internă</li>
+        <li>Organizații în reorganizare sau după schimbări majore de business</li>
+        <li>Proiecte limitate ca număr, cu atenție mare pe execuție</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <h2>Cum lucrăm</h2>
+        <p class="muted">
+          Capacităm echipe complementare pe proiect. Nu vindem pachete lunare —
+          livrăm rezultate pe etape, cu predare clară.
+        </p>
+      </div>
+      <ol class="steps reveal">
+        <li>
+          <strong>Diagnostic</strong>
+          <span>Înțelegem situația actuală, oamenii și documentele.</span>
+        </li>
+        <li>
+          <strong>Proiect</strong>
+          <span>Definim structura, procesele și, unde e cazul, digitalizarea.</span>
+        </li>
+        <li>
+          <strong>Implementare</strong>
+          <span>Punem în practică, supervizăm și predăm autonomia echipei.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container reveal">
+      <h2>Ai un proiect pe masă?</h2>
+      <p>
+        Spune-ne unde te afli — audit, reorganizare sau setarea unui
+        departament. Revenim cu o discuție scurtă, fără obligații.
+      </p>
+      <div class="cta-group">
+        <a class="btn btn-primary" href="/contact">Contactează-ne</a>
+        <a class="btn btn-outline" href="https://fiscontsrl.ro/" target="_blank" rel="noopener noreferrer">
+          Site-ul oficial Fiscont
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .services-list {
+    max-width: 46rem;
+  }
+
+  .band {
+    background: rgba(255, 255, 255, 0.45);
+    border-block: 1px solid var(--line);
+  }
+
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: step;
+  }
+
+  .steps li {
+    counter-increment: step;
+    display: grid;
+    gap: 0.35rem;
+    padding: 1.1rem 0 1.1rem 3rem;
+    position: relative;
+    border-top: 1px solid var(--line);
+  }
+
+  .steps li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 1.15rem;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--accent);
+  }
+
+  .steps strong {
+    color: var(--navy);
+    font-weight: 560;
+  }
+
+  .steps span {
+    color: var(--muted);
+  }
+
+  .cta-band {
+    background: linear-gradient(135deg, rgba(11, 31, 58, 0.06), rgba(154, 123, 60, 0.08));
+  }
+
+  .cta-band h2 {
+    max-width: 16ch;
+  }
+
+  .cta-band p {
+    max-width: 36rem;
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+</style>

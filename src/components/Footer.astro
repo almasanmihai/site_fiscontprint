@@ -1,0 +1,135 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">FISCONT <span>Proiecte</span></p>
+      <p class="footer-note">
+        Servicii conexe: audit intern, reorganizare financiară și setare de
+        departament financiar. Pentru contabilitate, HR și consultanță juridică
+        vizitează site-ul oficial.
+      </p>
+      <a class="footer-official" href="https://fiscontsrl.ro/" target="_blank" rel="noopener noreferrer">
+        fiscontsrl.ro
+      </a>
+    </div>
+
+    <div>
+      <h3>Navigare</h3>
+      <ul>
+        <li><a href="/servicii">Servicii</a></li>
+        <li><a href="/despre">Despre</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <ul>
+        <li>
+          <a href="tel:+40759011054">+40 759 011 054</a>
+        </li>
+        <li>
+          <a href="mailto:office@fiscontprint.ro">office@fiscontprint.ro</a>
+        </li>
+        <li>Bd. Unirii nr. 64, Bl. K4, sc. 4, et. 3<br />București</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {year} Fiscont — servicii conexe pe fiscontprint.ro</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 2rem;
+    background: var(--navy);
+    color: rgba(255, 255, 255, 0.78);
+    padding: 3.5rem 0 1.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  @media (min-width: 800px) {
+    .footer-grid {
+      grid-template-columns: 1.4fr 0.7fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 0.85rem;
+  }
+
+  .footer-brand span {
+    color: var(--accent-soft);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-left: 0.35rem;
+  }
+
+  .footer-note {
+    max-width: 28rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .footer-official {
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: var(--accent-soft);
+    font-weight: 500;
+  }
+
+  .footer-official:hover {
+    color: #e0c57a;
+  }
+
+  .site-footer h3 {
+    color: var(--white);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-footer li {
+    margin-bottom: 0.55rem;
+    font-size: 0.95rem;
+  }
+
+  .site-footer a {
+    color: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    color: var(--white);
+  }
+
+  .footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.85rem;
+  }
+</style>

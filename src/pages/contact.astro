@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ContactForm from "../components/ContactForm.astro";
+import "../styles/global.css";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contactează Fiscont Proiecte pentru audit intern, reorganizare financiară sau setarea unui departament financiar."
+>
+  <Header slot="header" />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Contact</h1>
+      <p class="lede">
+        Spune-ne pe scurt ce proiect ai în vedere. Răspundem în zilele lucrătoare.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <h2>Date de contact</h2>
+        <ul class="contact-list">
+          <li>
+            <span>Telefon</span>
+            <a href="tel:+40759011054">+40 759 011 054</a>
+          </li>
+          <li>
+            <span>Email</span>
+            <a href="mailto:office@fiscontprint.ro">office@fiscontprint.ro</a>
+          </li>
+          <li>
+            <span>Sediu Fiscont</span>
+            <address>
+              Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3<br />
+              București, România
+            </address>
+          </li>
+          <li>
+            <span>Program</span>
+            <p>Luni–Vineri, 09:00–18:00</p>
+          </li>
+        </ul>
+        <p class="muted note">
+          Pentru contabilitate, HR și consultanță juridică:
+          <a href="https://fiscontsrl.ro/" target="_blank" rel="noopener noreferrer">fiscontsrl.ro</a>
+        </p>
+      </div>
+
+      <div class="form-wrap reveal">
+        <h2>Trimite un mesaj</h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .contact-list li {
+    padding: 1rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .contact-list span {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+    font-weight: 500;
+  }
+
+  .contact-list a,
+  .contact-list address,
+  .contact-list p {
+    font-style: normal;
+    margin: 0;
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 1.05rem;
+  }
+
+  .contact-list a:hover {
+    color: var(--blue);
+  }
+
+  .note {
+    font-size: 0.95rem;
+  }
+
+  .form-wrap {
+    padding: 1.75rem;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid var(--line);
+  }
+
+  .form-wrap h2 {
+    margin-bottom: 1.25rem;
+  }
+</style>

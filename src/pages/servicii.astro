@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+---
+
+<BaseLayout
+  title="Servicii"
+  description="Audit intern, reorganizare financiară și creare de departament financiar cu organizare de digitalizare — servicii conexe Fiscont."
+>
+  <Header slot="header" />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Servicii pe proiect</h1>
+      <p class="lede">
+        Trei piloni. Capacitate limitată pe număr de proiecte — atenție pe
+        livrare, nu pe volum.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="audit-intern">
+    <div class="container detail reveal">
+      <p class="tag">01 — Audit intern</p>
+      <h2>Control, conformitate, riscuri</h2>
+      <p>
+        Auditul intern pe care îl oferim e orientat spre utilitate: ce funcționează,
+        ce lipsește și ce trebuie schimbat ca finanțele să nu depindă de
+        „cunoștințe din capul cuiva”.
+      </p>
+      <ul class="prose-list">
+        <li>Revizuirea fluxurilor de aprobare, plăți și raportare</li>
+        <li>Identificarea lacunelor de control și a riscurilor operaționale</li>
+        <li>Raport cu priorități și plan de remediere pe etape</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt" id="reorganizare">
+    <div class="container detail reveal">
+      <p class="tag">02 — Reorganizare financiară</p>
+      <h2>Ordine acolo unde businessul a crescut mai repede decât procesele</h2>
+      <p>
+        Lucrăm pe proiecte de reorganizare: roluri, responsabilități, calendar
+        de raportare, relația cu contabilitatea și cu managementul. Scopul e o
+        structură pe care o poți menține după ce plecăm.
+      </p>
+      <ul class="prose-list">
+        <li>Redesign de procese financiare și de guvernanță internă</li>
+        <li>Aliniere între operațiuni, finanțe și raportare către board</li>
+        <li>Tranziție ghidată, fără a bloca activitatea curentă</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="departament">
+    <div class="container detail reveal">
+      <p class="tag">03 — Departament financiar</p>
+      <h2>Creare și setare — inclusiv digitalizare</h2>
+      <p>
+        Construim departamentul financiar de la zero sau îl reconstruim unde
+        există doar piese disparate. Este un serviciu greu de găsit pe piață:
+        nu doar „consultanță”, ci organizare concretă a oamenilor, a
+        documentelor și a instrumentelor.
+      </p>
+      <p>
+        Am livrat deja proiecte de acest tip. Componenta de digitalizare —
+        organizarea contactelor, a avizelor, a supervizărilor și a fluxurilor
+        documentare — o includem acum ca parte integrată a setării, nu ca
+        afterthought.
+      </p>
+      <ul class="prose-list">
+        <li>Organigrama, fișe de post și proceduri operaționale</li>
+        <li>Digitalizare: contacte, avize, aprobări, arhivă logică</li>
+        <li>Supervizare și handover până când echipa rulează autonom</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container reveal">
+      <h2>Care dintre cele trei ți se potrivește?</h2>
+      <p class="muted">
+        Uneori e nevoie doar de un audit. Alteori de un proiect complet de
+        departament. Hai să vedem împreună.
+      </p>
+      <div class="cta-group">
+        <a class="btn btn-primary" href="/contact">Solicită o discuție</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .detail {
+    max-width: 42rem;
+  }
+
+  .tag {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.85rem;
+  }
+
+  .alt {
+    background: rgba(255, 255, 255, 0.45);
+    border-block: 1px solid var(--line);
+  }
+
+  .cta-band {
+    background: linear-gradient(135deg, rgba(11, 31, 58, 0.06), rgba(154, 123, 60, 0.08));
+  }
+</style>

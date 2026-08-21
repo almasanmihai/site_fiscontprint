@@ -1,0 +1,94 @@
+---
+/**
+ * Formular contact via Formspree.
+ * Înlocuiește FORM_ID din acțiune după ce creezi formularul pe https://formspree.io
+ * (vezi DEPLOY.md). Până atunci, mesajele pot fi trimise și pe email.
+ */
+const formspreeId = "YOUR_FORM_ID";
+const action = `https://formspree.io/f/${formspreeId}`;
+---
+
+<form class="contact-form" action={action} method="POST">
+  <input type="hidden" name="_subject" value="Mesaj de pe fiscontprint.ro" />
+  <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="field">
+    <label for="name">Nume</label>
+    <input id="name" name="name" type="text" required autocomplete="name" />
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required autocomplete="email" />
+  </div>
+
+  <div class="field">
+    <label for="company">Companie (opțional)</label>
+    <input id="company" name="company" type="text" autocomplete="organization" />
+  </div>
+
+  <div class="field">
+    <label for="message">Mesaj</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Trimite mesajul</button>
+  <p class="form-note muted">
+    Sau scrie-ne direct la
+    <a href="mailto:office@fiscontprint.ro">office@fiscontprint.ro</a>
+  </p>
+</form>
+
+<style>
+  .contact-form {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.85rem 0.95rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.75);
+    font: inherit;
+    color: var(--ink);
+    transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--blue-soft);
+    box-shadow: 0 0 0 3px rgba(44, 106, 158, 0.15);
+  }
+
+  .hp {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  .form-note {
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0;
+  }
+
+  .form-note a {
+    color: var(--blue);
+  }
+</style>
