@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 // Pentru domeniul fiscontprint.ro: site: 'https://fiscontprint.ro', fără base.
 export default defineConfig({
   site: 'https://almasanmihai.github.io',
-  base: '/site_fiscontprint',
+  base: '/site_fiscontprint/',
   output: 'static',
   compressHTML: true,
 });

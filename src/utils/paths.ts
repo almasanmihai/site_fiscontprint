@@ -10,7 +10,8 @@ export function withBase(path: string): string {
     return path;
   }
 
-  const base = import.meta.env.BASE_URL;
+  const baseRaw = import.meta.env.BASE_URL || "/";
+  const base = baseRaw.endsWith("/") ? baseRaw : `${baseRaw}/`;
   const [pathname, hash] = path.split("#");
   const clean = pathname === "/" ? "" : pathname.replace(/^\//, "");
   const url = `${base}${clean}`;
@@ -19,7 +20,7 @@ export function withBase(path: string): string {
 
 /** Pathname without the `base` prefix, for active-nav checks. */
 export function pathWithoutBase(pathname: string): string {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
   let path = pathname.replace(/\/$/, "") || "/";
   if (base && path.startsWith(base)) {
     path = path.slice(base.length) || "/";
