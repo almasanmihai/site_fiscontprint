@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../utils/paths";
+
 interface Props {
   eyebrow?: string;
   title: string;
@@ -23,7 +25,7 @@ const { eyebrow, title, description, points = [], href } = Astro.props;
       </ul>
     )
   }
-  {href && <a class="more" href={href}>Află mai mult</a>}
+  {href && <a class="more" href={withBase(href)}>Află mai mult</a>}
 </article>
 
 <style>

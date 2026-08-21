@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { withBase } from "../utils/paths";
 import "../styles/global.css";
 ---
 
@@ -87,7 +88,7 @@ import "../styles/global.css";
         departament. Hai să vedem împreună.
       </p>
       <div class="cta-group">
-        <a class="btn btn-primary" href="/contact">Solicită o discuție</a>
+        <a class="btn btn-primary" href={withBase("/contact")}>Solicită o discuție</a>
       </div>
     </div>
   </section>

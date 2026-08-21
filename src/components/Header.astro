@@ -1,5 +1,7 @@
 ---
-const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+import { pathWithoutBase, withBase } from "../utils/paths";
+
+const path = pathWithoutBase(Astro.url.pathname);
 
 const links = [
   { href: "/", label: "Acasă" },
@@ -16,7 +18,7 @@ function isActive(href: string) {
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Fiscont Proiecte — pagina principală">
+    <a class="brand" href={withBase("/")} aria-label="Fiscont Proiecte — pagina principală">
       <span class="brand-mark">FISCONT</span>
       <span class="brand-sub">Proiecte</span>
     </a>
@@ -36,7 +38,7 @@ function isActive(href: string) {
       {
         links.map((link) => (
           <a
-            href={link.href}
+            href={withBase(link.href)}
             class:list={[{ active: isActive(link.href) }]}
             aria-current={isActive(link.href) ? "page" : undefined}
           >
@@ -44,7 +46,7 @@ function isActive(href: string) {
           </a>
         ))
       }
-      <a class="nav-cta" href="/contact">Discută un proiect</a>
+      <a class="nav-cta" href={withBase("/contact")}>Discută un proiect</a>
     </nav>
   </div>
 </header>

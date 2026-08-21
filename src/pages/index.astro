@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
 import ServiceBlock from "../components/ServiceBlock.astro";
+import { withBase } from "../utils/paths";
 import "../styles/global.css";
 ---
 
@@ -108,7 +109,7 @@ import "../styles/global.css";
         departament. Revenim cu o discuție scurtă, fără obligații.
       </p>
       <div class="cta-group">
-        <a class="btn btn-primary" href="/contact">Contactează-ne</a>
+        <a class="btn btn-primary" href={withBase("/contact")}>Contactează-ne</a>
         <a class="btn btn-outline" href="https://fiscontsrl.ro/" target="_blank" rel="noopener noreferrer">
           Site-ul oficial Fiscont
         </a>

@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../utils/paths";
+
 interface Props {
   brand?: string;
   title: string;
@@ -18,9 +20,11 @@ const {
   secondaryHref = "/servicii",
   secondaryLabel = "Vezi serviciile",
 } = Astro.props;
+
+const heroImage = `url('${withBase("/hero.jpg")}')`;
 ---
 
-<section class="hero" aria-label="Prezentare">
+<section class="hero" aria-label="Prezentare" style={`--hero-image: ${heroImage}`}>
   <div class="hero-media" aria-hidden="true"></div>
   <div class="hero-shade" aria-hidden="true"></div>
   <div class="container hero-content">
@@ -28,8 +32,8 @@ const {
     <h1>{title}</h1>
     <p class="hero-lede">{lede}</p>
     <div class="cta-group">
-      <a class="btn btn-primary" href={primaryHref}>{primaryLabel}</a>
-      <a class="btn btn-ghost" href={secondaryHref}>{secondaryLabel}</a>
+      <a class="btn btn-primary" href={withBase(primaryHref)}>{primaryLabel}</a>
+      <a class="btn btn-ghost" href={withBase(secondaryHref)}>{secondaryLabel}</a>
     </div>
   </div>
 </section>
@@ -49,7 +53,7 @@ const {
     inset: 0;
     background:
       linear-gradient(120deg, rgba(11, 31, 58, 0.15), transparent 45%),
-      url("/hero.jpg") center / cover no-repeat;
+      var(--hero-image) center / cover no-repeat;
     transform: scale(1.04);
     animation: hero-drift 18s var(--ease) infinite alternate;
   }

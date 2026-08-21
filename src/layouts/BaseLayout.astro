@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../utils/paths";
+
 interface Props {
   title: string;
   description?: string;
@@ -13,6 +15,8 @@ const {
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const fullTitle = title.includes("Fiscont") ? title : `${title} | Fiscont Proiecte`;
+const favicon = withBase("/favicon.svg");
+const ogImageUrl = new URL(withBase(ogImage), Astro.site).href;
 ---
 
 <!doctype html>
@@ -29,11 +33,11 @@ const fullTitle = title.includes("Fiscont") ? title : `${title} | Fiscont Proiec
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

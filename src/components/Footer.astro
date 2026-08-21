@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../utils/paths";
+
 const year = new Date().getFullYear();
 ---
 
@@ -19,9 +21,9 @@ const year = new Date().getFullYear();
     <div>
       <h3>Navigare</h3>
       <ul>
-        <li><a href="/servicii">Servicii</a></li>
-        <li><a href="/despre">Despre</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href={withBase("/servicii")}>Servicii</a></li>
+        <li><a href={withBase("/despre")}>Despre</a></li>
+        <li><a href={withBase("/contact")}>Contact</a></li>
       </ul>
     </div>
 
