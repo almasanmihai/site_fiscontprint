@@ -5,18 +5,66 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  /** Preload LCP image (e.g. homepage hero). */
+  preloadImage?: string;
+  /** Optional page-specific JSON-LD objects (merged with Organization). */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title,
   description = "Servicii conexe Fiscont: audit intern, reorganizare financiară și creare de departament financiar, inclusiv organizare de digitalizare.",
-  ogImage = "/og-default.svg",
+  ogImage = "/og-default.png",
+  preloadImage,
+  jsonLd,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const siteUrl = Astro.site ?? new URL("https://fiscontprint.ro");
+const pathname = Astro.url.pathname;
+const canonical = new URL(pathname, siteUrl).href;
 const fullTitle = title.includes("Fiscont") ? title : `${title} | Fiscont Proiecte`;
 const favicon = withBase("/favicon.svg");
-const ogImageUrl = new URL(withBase(ogImage), Astro.site).href;
+const ogImagePath = withBase(ogImage);
+const ogImageUrl = new URL(ogImagePath, siteUrl).href;
+const preloadHref = preloadImage ? withBase(preloadImage) : undefined;
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Fiscont Proiecte",
+  alternateName: "Fiscont",
+  url: new URL(withBase("/"), siteUrl).href,
+  logo: new URL(withBase("/favicon.svg"), siteUrl).href,
+  image: ogImageUrl,
+  description,
+  email: "office@fiscontprint.ro",
+  telephone: "+40-759-011-054",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Bd. Unirii nr. 64, Bl. K4, sc. 4, et. 3",
+    addressLocality: "București",
+    addressCountry: "RO",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Romania",
+  },
+  sameAs: ["https://fiscontsrl.ro/"],
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Fiscont",
+    url: "https://fiscontsrl.ro/",
+  },
+  knowsAbout: [
+    "Audit intern",
+    "Reorganizare financiară",
+    "Departament financiar",
+    "Digitalizare documente",
+  ],
+};
+
+const extraLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const structuredData = [organizationLd, ...extraLd];
 ---
 
 <!doctype html>
@@ -25,29 +73,46 @@ const ogImageUrl = new URL(withBase(ogImage), Astro.site).href;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0B1F3A" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="author" content="Fiscont" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="ro" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fiscont Proiecte" />
     <meta property="og:locale" content="ro_RO" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content="Fiscont Proiecte — audit, reorganizare, departament financiar" />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="Fiscont Proiecte — audit, reorganizare, departament financiar" />
+
     <link rel="icon" type="image/svg+xml" href={favicon} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="apple-touch-icon" href={favicon} />
+
+    {
+      preloadHref && (
+        <link rel="preload" as="image" href={preloadHref} fetchpriority="high" />
+      )
+    }
+
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
+    <a class="skip-link" href="#continut-principal">Sari la conținut</a>
     <slot name="header" />
-    <main class="site-main">
+    <main id="continut-principal" class="site-main">
       <slot />
     </main>
     <slot name="footer" />
@@ -75,3 +140,26 @@ const ogImageUrl = new URL(withBase(ogImage), Astro.site).href;
     </script>
   </body>
 </html>
+
+<style is:global>
+  .skip-link {
+    position: absolute;
+    left: var(--space);
+    top: 0.75rem;
+    z-index: 100;
+    padding: 0.65rem 1rem;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 500;
+    transform: translateY(-160%);
+    transition: transform 0.2s var(--ease);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>

@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# Preview pe GitHub Pages — indexarea principală e pe domeniul de producție
 Sitemap: https://fiscontprint.ro/sitemap.xml

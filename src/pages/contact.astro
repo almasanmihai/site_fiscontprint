@@ -2,13 +2,20 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import ContactForm from "../components/ContactForm.astro";
 import "../styles/global.css";
 ---
 
 <BaseLayout
-  title="Contact"
-  description="Contactează Fiscont Proiecte pentru audit intern, reorganizare financiară sau setarea unui departament financiar."
+  title="Contact Fiscont Proiecte"
+  description="Contactează Fiscont Proiecte pentru audit intern, reorganizare financiară sau setarea unui departament financiar. București — +40 759 011 054."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Fiscont Proiecte",
+    description:
+      "Contact pentru audit intern, reorganizare financiară sau setarea unui departament financiar.",
+    inLanguage: "ro-RO",
+  }}
 >
   <Header slot="header" />
 
@@ -22,40 +29,39 @@ import "../styles/global.css";
   </section>
 
   <section class="section">
-    <div class="container split">
-      <div class="reveal">
-        <h2>Date de contact</h2>
-        <ul class="contact-list">
-          <li>
-            <span>Telefon</span>
-            <a href="tel:+40759011054">+40 759 011 054</a>
-          </li>
-          <li>
-            <span>Email</span>
-            <a href="mailto:office@fiscontprint.ro">office@fiscontprint.ro</a>
-          </li>
-          <li>
-            <span>Sediu Fiscont</span>
-            <address>
-              Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3<br />
-              București, România
-            </address>
-          </li>
-          <li>
-            <span>Program</span>
-            <p>Luni–Vineri, 09:00–18:00</p>
-          </li>
-        </ul>
-        <p class="muted note">
-          Pentru contabilitate, HR și consultanță juridică:
-          <a href="https://fiscontsrl.ro/" target="_blank" rel="noopener noreferrer">fiscontsrl.ro</a>
-        </p>
+    <div class="container contact-panel reveal">
+      <h2>Date de contact</h2>
+      <ul class="contact-list">
+        <li>
+          <span>Telefon</span>
+          <a href="tel:+40759011054">+40 759 011 054</a>
+        </li>
+        <li>
+          <span>Email</span>
+          <a href="mailto:office@fiscontprint.ro">office@fiscontprint.ro</a>
+        </li>
+        <li>
+          <span>Sediu Fiscont</span>
+          <address>
+            Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3<br />
+            București, România
+          </address>
+        </li>
+        <li>
+          <span>Program</span>
+          <p>Luni–Vineri, 09:00–18:00</p>
+        </li>
+      </ul>
+
+      <div class="cta-group">
+        <a class="btn btn-primary" href="tel:+40759011054">Sună acum</a>
+        <a class="btn btn-outline" href="mailto:office@fiscontprint.ro">Trimite email</a>
       </div>
 
-      <div class="form-wrap reveal">
-        <h2>Trimite un mesaj</h2>
-        <ContactForm />
-      </div>
+      <p class="muted note">
+        Pentru contabilitate, HR și consultanță juridică:
+        <a href="https://fiscontsrl.ro/" target="_blank" rel="noopener noreferrer">fiscontsrl.ro</a>
+      </p>
     </div>
   </section>
 
@@ -63,6 +69,14 @@ import "../styles/global.css";
 </BaseLayout>
 
 <style>
+  .contact-panel {
+    max-width: 36rem;
+  }
+
+  .contact-panel h2 {
+    margin-bottom: 0.25rem;
+  }
+
   .contact-list {
     list-style: none;
     padding: 0;
@@ -99,16 +113,7 @@ import "../styles/global.css";
   }
 
   .note {
+    margin-top: 1.75rem;
     font-size: 0.95rem;
-  }
-
-  .form-wrap {
-    padding: 1.75rem;
-    background: rgba(255, 255, 255, 0.65);
-    border: 1px solid var(--line);
-  }
-
-  .form-wrap h2 {
-    margin-bottom: 1.25rem;
   }
 </style>

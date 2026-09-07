@@ -20,15 +20,6 @@ Conținutul de upload este în folderul `dist/`.
    - /servicii, /despre, /contact
    - linkul către https://fiscontsrl.ro/
 
-## Formular contact (Formspree)
-
-1. Creează un cont pe [formspree.io](https://formspree.io).
-2. Creează un formular nou și copiază ID-ul (ex. `xyzabcde`).
-3. În `src/components/ContactForm.astro`, înlocuiește `YOUR_FORM_ID` cu ID-ul real.
-4. Rulează din nou `npm run build` și reîncarcă pe server.
-
-Până configurezi Formspree, vizitatorii pot folosi `office@fiscontprint.ro` (link în formular).
-
 ## Preview local
 
 ```bash

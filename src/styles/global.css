@@ -1,3 +1,5 @@
+@import "./fonts.css";
+
 :root {
   --navy: #0b1f3a;
   --navy-mid: #143052;
@@ -12,7 +14,7 @@
   --surface-2: #e8eef4;
   --white: #ffffff;
   --radius: 2px;
-  --font-display: "Fraunces", "Georgia", serif;
+  --font-display: "Fraunces Variable", "Fraunces", "Georgia", serif;
   --font-body: "Outfit", "Segoe UI", sans-serif;
   --space: clamp(1rem, 2.5vw, 2rem);
   --max: 72rem;
